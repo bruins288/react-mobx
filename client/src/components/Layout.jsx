@@ -1,17 +1,18 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import NavigationBar from "./NavigationBar";
 
 function Layout() {
   return (
-    <div>
+    <Container fluid>
       <header>
-        <NavLink to="/home">Home</NavLink>
+        <NavigationBar />
       </header>
       <main>
         <Outlet />
       </main>
-      <footer>2022</footer>
-    </div>
+    </Container>
   );
 }
 
