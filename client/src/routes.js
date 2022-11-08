@@ -8,7 +8,9 @@ import CoincidentIndicators from "./pages/coincident/CoincidentIndicators.jsx";
 import CoincidentCountry from "./pages/coincident/CoincidentCountry.jsx";
 import LaggingIndicators from "./pages/lagging/LaggingIndicators.jsx";
 import LaggingCountry from "./pages/lagging/LaggingCountry.jsx";
+import About from "./pages/About.jsx";
 import {
+  ABOUT_ROUTE,
   ADMIN_ROUTE,
   COINCIDENT_ROUTE,
   COMPARE_ROUTE,
@@ -47,6 +49,10 @@ export const publicRoutes = [
   {
     path: REGISTRATION_ROUTE,
     element: <Auth />,
+  },
+  {
+    path: ABOUT_ROUTE,
+    element: <About />,
   },
   {
     path: LEADING_ROUTE,

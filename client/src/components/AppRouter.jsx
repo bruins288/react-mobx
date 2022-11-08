@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Context } from "../index.js";
 import { authRoutes, publicRoutes } from "../routes.js";
+import { HOME_ROUTE } from "../utils/constants.js";
 import Layout from "./Layout.jsx";
 
 function AppRouter() {
@@ -17,7 +18,7 @@ function AppRouter() {
         {publicRoutes.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
         ))}
-        <Route path="*" element={<Navigate to={"/"} />} />
+        <Route path="*" element={<Navigate to={HOME_ROUTE} />} />
       </Route>
     </Routes>
   );

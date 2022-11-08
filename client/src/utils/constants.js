@@ -7,3 +7,4 @@ export const COINCIDENT_ROUTE = "/coincident";
 export const LAGGING_ROUTE = "/lagging";
 export const PROFILE_ROUTE = "/profile";
 export const COMPARE_ROUTE = "/compare";
+export const ABOUT_ROUTE = "/about";
