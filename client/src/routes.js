@@ -1,8 +1,11 @@
+import React from "react";
 import Admin from "./pages/Admin.jsx";
 import Profile from "./pages/Profile.jsx";
 import CompareCountries from "./pages/CompareCountries.jsx";
 import Home from "./pages/Home.jsx";
 import Auth from "./pages/Auth.jsx";
+import RateIndicators from "./pages/rate/RateIndicators.jsx";
+import RateCountry from "./pages/rate/RateCountry.jsx";
 import LeadingIndicators from "./pages/leading/LeadingIndicators.jsx";
 import CoincidentIndicators from "./pages/coincident/CoincidentIndicators.jsx";
 import CoincidentCountry from "./pages/coincident/CoincidentCountry.jsx";
@@ -15,6 +18,7 @@ import {
   COINCIDENT_ROUTE,
   COMPARE_ROUTE,
   HOME_ROUTE,
+  RATE_ROUTE,
   LAGGING_ROUTE,
   LEADING_ROUTE,
   LOGIN_ROUTE,
@@ -53,6 +57,14 @@ export const publicRoutes = [
   {
     path: ABOUT_ROUTE,
     element: <About />,
+  },
+  {
+    path: RATE_ROUTE,
+    element: <RateIndicators />,
+  },
+  {
+    path: RATE_ROUTE + "/:country",
+    element: <RateCountry />,
   },
   {
     path: LEADING_ROUTE,

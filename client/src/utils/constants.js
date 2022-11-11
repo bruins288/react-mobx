@@ -1,7 +1,8 @@
-export const HOME_ROUTE = "/home";
+export const HOME_ROUTE = "/";
 export const ADMIN_ROUTE = "/admin";
 export const LOGIN_ROUTE = "/login";
 export const REGISTRATION_ROUTE = "/registration";
+export const RATE_ROUTE = "/rate";
 export const LEADING_ROUTE = "/leading";
 export const COINCIDENT_ROUTE = "/coincident";
 export const LAGGING_ROUTE = "/lagging";

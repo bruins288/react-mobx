@@ -8,7 +8,7 @@ import NavbarOffcanvasBody from "./menuitem/NavbarOffcanvasBody.jsx";
 
 const NavigationBar = () => {
   return (
-    <Navbar expand="lg" bg="primary" variant="dark">
+    <Navbar expand="lg" bg="primary" variant="dark" className="mb-2">
       <Container>
         <Navbar.Brand href={HOME_ROUTE} className={classes.navigationBar}>
           Макроэкономика

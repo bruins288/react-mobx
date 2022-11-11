@@ -1,4 +1,4 @@
-export const StoreContinent = {
+export const DataContinent = {
   Continent: [
     {
       id: 1,

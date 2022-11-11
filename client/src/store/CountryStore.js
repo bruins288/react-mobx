@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import { StoreContinent } from "../Data/StoreContinent";
+import { DataContinent } from "../Data/DataContinent.js";
 
-export default class Country {
+export default class CountryStore {
   constructor() {
-    this._continent = StoreContinent.Continent;
+    this._continent = DataContinent.Continent;
     makeAutoObservable(this);
   }
   get Continent() {

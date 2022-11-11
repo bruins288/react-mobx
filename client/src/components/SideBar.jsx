@@ -1,40 +1,32 @@
 import React from "react";
+import { Accordion } from "react-bootstrap";
 import { useContext } from "react";
-import { Accordion, Nav } from "react-bootstrap";
-import { NavLink, useLocation } from "react-router-dom";
 import { Context } from "../index.js";
+import { useLocation } from "react-router-dom";
+import SideBarItem from "./sidebarlist/SideBarItem.jsx";
+import { observer } from "mobx-react-lite";
 
-const SideBar = () => {
-  const { menu } = useContext(Context);
+const SideBarHeader = observer(() => {
+  const { countryStore } = useContext(Context);
   const location = useLocation();
 
   let path = location.pathname.split("/")[1];
-
-  let continent = menu.Continent.map((continent) => {
-    return (
-      <Accordion.Item eventKey={continent.id} key={continent.id}>
-        <Accordion.Header>{continent.continentName}</Accordion.Header>
-        {continent.Country.map((country) => (
-          <Accordion.Body key={country.id}>
-            <Nav variant="pills" className="flex-column">
-              <Nav.Link
-                key={country.id}
-                as={NavLink}
-                to={path + `/${country.countryShortName}`}
-              >
-                {country.countryName}
-              </Nav.Link>
-            </Nav>
-          </Accordion.Body>
-        ))}
-      </Accordion.Item>
-    );
-  });
   return (
-    <Accordion defaultActiveKey="0" className="p-1">
-      {continent}
+    <Accordion defaultActiveKey="0" className="p-0" flush>
+      {countryStore.Continent.map((continent) => (
+        <Accordion.Item eventKey={continent.id} key={continent.id}>
+          <Accordion.Header>
+            <div className="fs-5">{continent.continentName}</div>
+          </Accordion.Header>
+          {continent.Country.map((country) => (
+            <Accordion.Body key={country.id} className="p-0">
+              <SideBarItem country={country} path={path} />
+            </Accordion.Body>
+          ))}
+        </Accordion.Item>
+      ))}
     </Accordion>
   );
-};
+});
 
-export default SideBar;
+export default SideBarHeader;
