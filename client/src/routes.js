@@ -4,8 +4,8 @@ import Profile from "./pages/Profile.jsx";
 import CompareCountries from "./pages/CompareCountries.jsx";
 import Home from "./pages/Home.jsx";
 import Auth from "./pages/Auth.jsx";
-import RateIndicators from "./pages/rate/RateIndicators.jsx";
-import RateCountry from "./pages/rate/RateCountry.jsx";
+import MarketIndicators from "./pages/market/MarketIndicators.jsx";
+import MarketCountry from "./pages/market/MarketCountry.jsx";
 import LeadingIndicators from "./pages/leading/LeadingIndicators.jsx";
 import CoincidentIndicators from "./pages/coincident/CoincidentIndicators.jsx";
 import CoincidentCountry from "./pages/coincident/CoincidentCountry.jsx";
@@ -60,11 +60,11 @@ export const publicRoutes = [
   },
   {
     path: RATE_ROUTE,
-    element: <RateIndicators />,
+    element: <MarketIndicators />,
   },
   {
     path: RATE_ROUTE + "/:country",
-    element: <RateCountry />,
+    element: <MarketCountry />,
   },
   {
     path: LEADING_ROUTE,

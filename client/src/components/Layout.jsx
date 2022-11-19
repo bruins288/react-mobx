@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import NavigationBar from "./NavigationBar";
-import SideBar from "./SideBar.jsx";
+import SideBarContainer from "./containers/SideBarContainer.jsx";
 import { pathSideBar } from "../utils/pathSideBar.js";
 
 function Layout() {
@@ -17,7 +17,7 @@ function Layout() {
       ) : (
         <Row>
           <Col lg={2} className="pt-1">
-            <SideBar />
+            <SideBarContainer />
           </Col>
           <Col lg={10}>
             <Outlet />

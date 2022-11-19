@@ -1,0 +1,18 @@
+table td {
+  vertical-align: middle;
+}
+.custom_btn {
+  cursor: pointer; 
+  background: none;
+  margin-left: 5px;
+  border: none;
+}
+.custom_btn svg {
+  pointer-events: none;
+    padding: 5px;
+    width: 1.7em;
+    height: 1.7em;    
+}
+.display_off {
+  display: none;
+}

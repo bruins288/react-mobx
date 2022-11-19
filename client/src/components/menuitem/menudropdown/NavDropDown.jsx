@@ -12,7 +12,7 @@ function NavDropDown() {
   return (
     <NavDropdown title="Индикаторы" id="offcanvasNavbarDropdown-expand-lg">
       <NavDropdown.Item as={NavLink} to={RATE_ROUTE}>
-        Ставки и рынок
+        Рыночные индикаторы
       </NavDropdown.Item>
       <NavDropdown.Item as={NavLink} to={LEADING_ROUTE}>
         Опережающие индикаторы

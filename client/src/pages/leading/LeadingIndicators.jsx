@@ -1,7 +1,7 @@
 import React from "react";
 
-function LeadingIndicators() {
-  return <div>LeadingIndicators</div>;
-}
+const LeadingIndicators = () => {
+  return <div>Leading indicators</div>;
+};
 
 export default LeadingIndicators;

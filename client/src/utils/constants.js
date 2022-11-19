@@ -9,3 +9,7 @@ export const LAGGING_ROUTE = "/lagging";
 export const PROFILE_ROUTE = "/profile";
 export const COMPARE_ROUTE = "/compare";
 export const ABOUT_ROUTE = "/about";
+export const NAME_INDEX = "Индекс";
+export const NAME_PERCENT = "%";
+export const NAME_DATA = "Дата публикации";
+export const TR_10 = "tReuters_10Data";
