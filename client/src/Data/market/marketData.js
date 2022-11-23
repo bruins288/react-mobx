@@ -1,6 +1,7 @@
 export const marketKeysData = {
   id: 1,
   marketName: "Рыночные индикаторы",
+  marketNames: ["10-летние облигации", "фондовый индекс"],
 };
 export const marketData = {
   tReuters_10: [

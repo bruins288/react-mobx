@@ -6,7 +6,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import UserStore from "./store/UserStore.js";
 import GlobalSubjectStore from "./store/GlobalSubjectStore.js";
-import MarketKeyIndicatorStore from "./store/MarketKeyIndicatorStore";
+import MarketKeyStore from "./store/market/MarketKeyStore";
 
 export const Context = createContext(null);
 
@@ -17,7 +17,7 @@ root.render(
       value={{
         userStore: new UserStore(),
         globalSubjectStore: new GlobalSubjectStore(),
-        marketKeyIndicatorStore: new MarketKeyIndicatorStore(),
+        marketKeyStore: new MarketKeyStore(),
       }}
     >
       <App />

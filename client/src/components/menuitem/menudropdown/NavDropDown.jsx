@@ -5,13 +5,13 @@ import {
   COINCIDENT_ROUTE,
   LAGGING_ROUTE,
   LEADING_ROUTE,
-  RATE_ROUTE,
+  MARKET_ROUTE,
 } from "../../../utils/constants.js";
 
 function NavDropDown() {
   return (
     <NavDropdown title="Индикаторы" id="offcanvasNavbarDropdown-expand-lg">
-      <NavDropdown.Item as={NavLink} to={RATE_ROUTE}>
+      <NavDropdown.Item as={NavLink} to={MARKET_ROUTE}>
         Рыночные индикаторы
       </NavDropdown.Item>
       <NavDropdown.Item as={NavLink} to={LEADING_ROUTE}>

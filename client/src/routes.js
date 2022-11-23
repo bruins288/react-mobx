@@ -18,7 +18,7 @@ import {
   COINCIDENT_ROUTE,
   COMPARE_ROUTE,
   HOME_ROUTE,
-  RATE_ROUTE,
+  MARKET_ROUTE,
   LAGGING_ROUTE,
   LEADING_ROUTE,
   LOGIN_ROUTE,
@@ -59,11 +59,11 @@ export const publicRoutes = [
     element: <About />,
   },
   {
-    path: RATE_ROUTE,
+    path: MARKET_ROUTE,
     element: <MarketIndicators />,
   },
   {
-    path: RATE_ROUTE + "/:country",
+    path: MARKET_ROUTE + "/:country",
     element: <MarketCountry />,
   },
   {

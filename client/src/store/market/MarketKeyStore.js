@@ -1,8 +1,9 @@
 import { computed, makeObservable, observable } from "mobx";
-import GlobalSubjectStore from "./GlobalSubjectStore.js";
-import { marketKeysData, marketData } from "../data/market/marketData.js";
+import GlobalSubjectStore from "../GlobalSubjectStore.js";
+import { marketKeysData, marketData } from "../../data/market/marketData.js";
+import Helper from "../../utils/Helper.js";
 
-export default class MarketKeyIndicatorStore extends GlobalSubjectStore {
+export default class MarketKeyStore extends GlobalSubjectStore {
   constructor() {
     super();
     this._marketKeysData = marketKeysData;
@@ -62,5 +63,55 @@ export default class MarketKeyIndicatorStore extends GlobalSubjectStore {
   }
   getAvgStockNumbersById(id) {
     return this._avgStockNumbers.get(id);
+  }
+  buildGrafReuters_10(countryId) {
+    return this.tReuters_10
+      .filter((reuters) => reuters.countryId === countryId)
+      .reduce(
+        (acc, reuters) => ({
+          labels: [
+            ...reuters.tReuters_10Data.map((dataReuters) =>
+              Helper.getMonthYear(dataReuters.date)
+            ),
+          ],
+          datasets: [
+            {
+              label: reuters.tReutersName,
+              data: [
+                ...reuters.tReuters_10Data.map(
+                  (dataReuters) => dataReuters.tr_10
+                ),
+              ],
+              fill: true,
+              backgroundColor: "rgba(6, 156,51, .3)",
+              borderColor: "#02b844",
+            },
+          ],
+        }),
+        {}
+      );
+  }
+  buildGrafStock(countryId) {
+    return this.stocks
+      .filter((stock) => stock.countryId === countryId)
+      .reduce(
+        (acc, stock) => ({
+          labels: [
+            ...stock.stockData.map((dataStock) =>
+              Helper.getMonthYear(dataStock.date)
+            ),
+          ],
+          datasets: [
+            {
+              label: stock.stockName,
+              data: [...stock.stockData.map((dataStock) => dataStock.stock)],
+              fill: true,
+              backgroundColor: "rgba(27, 193, 210, 0.3)",
+              borderColor: "#02acb8",
+            },
+          ],
+        }),
+        {}
+      );
   }
 }
