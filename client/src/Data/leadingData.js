@@ -8,7 +8,7 @@ export const leadingKeysData = {
 };
 
 export const leadingData = {
-  manufacturingPMI: [
+  manufacturing: [
     {
       id: 51,
       manufacturingName: "ISM Manufacturing PMI",
