@@ -3,10 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
 import { Container, Row, Col } from "react-bootstrap";
 import InputSelect from "../../components/ui/inputs/InputSelect.jsx";
-import { Line } from "react-chartjs-2";
-import { Chart } from "chart.js";
-import StreamingPlugin from "chartjs-plugin-streaming";
-import "chart.js/auto";
+import DataGraf from "../../components/DataGraf.jsx";
 import {
   GREEN_BACK_1,
   GREEN_LINE_1,
@@ -14,13 +11,9 @@ import {
   BLUE_LINE_1,
 } from "../../utils/constantsColor.js";
 
-Chart.register(StreamingPlugin);
-Chart.defaults.font.size = 14;
-
 const LeadingIndicators = observer(() => {
   const { leadingKeyStore } = React.useContext(Context);
   const [countryId, setCountryId] = React.useState(1);
-  const grafRef = React.useRef();
 
   console.log("render leading indicators");
   return (
@@ -38,12 +31,9 @@ const LeadingIndicators = observer(() => {
       </Row>
       <Row className="mt-2">
         <Col md={12} lg={6}>
-          <h2 className="text-center">
-            {leadingKeyStore.leadingKeysData.leadingNames[0]}
-          </h2>
-          <Line
-            ref={grafRef}
-            data={leadingKeyStore.getDataGraf(
+          <DataGraf
+            keyName={leadingKeyStore.leadingKeysData.leadingNames[0]}
+            dataGraf={leadingKeyStore.getDataGraf(
               countryId,
               leadingKeyStore.manufacturing,
               true,
@@ -53,12 +43,9 @@ const LeadingIndicators = observer(() => {
           />
         </Col>
         <Col md={12} lg={6}>
-          <h2 className="text-center">
-            {leadingKeyStore.leadingKeysData.leadingNames[1]}
-          </h2>
-          <Line
-            ref={grafRef}
-            data={leadingKeyStore.getDataGraf(
+          <DataGraf
+            keyName={leadingKeyStore.leadingKeysData.leadingNames[1]}
+            dataGraf={leadingKeyStore.getDataGraf(
               countryId,
               leadingKeyStore.services,
               true,

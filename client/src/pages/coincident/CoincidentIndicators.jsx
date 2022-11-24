@@ -3,10 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
 import { Container, Row, Col } from "react-bootstrap";
 import InputSelect from "../../components/ui/inputs/InputSelect.jsx";
-import { Line } from "react-chartjs-2";
-import { Chart } from "chart.js";
-import StreamingPlugin from "chartjs-plugin-streaming";
-import "chart.js/auto";
+import DataGraf from "../../components/DataGraf.jsx";
 import {
   GREEN_BACK_1,
   GREEN_LINE_1,
@@ -14,13 +11,9 @@ import {
   BLUE_LINE_1,
 } from "../../utils/constantsColor.js";
 
-Chart.register(StreamingPlugin);
-Chart.defaults.font.size = 14;
-
 const CoincidentIndicators = observer(() => {
   const { coincidentKeyStore } = React.useContext(Context);
   const [countryId, setCountryId] = React.useState(1);
-  const grafRef = React.useRef();
 
   console.log("render coincident indicators");
   return (
@@ -38,12 +31,9 @@ const CoincidentIndicators = observer(() => {
       </Row>
       <Row className="mt-2">
         <Col md={12} lg={6}>
-          <h2 className="text-center">
-            {coincidentKeyStore.coincidentKeysData.coincidentNames[0]}
-          </h2>
-          <Line
-            ref={grafRef}
-            data={coincidentKeyStore.getDataGraf(
+          <DataGraf
+            keyName={coincidentKeyStore.coincidentKeysData.coincidentNames[0]}
+            dataGraf={coincidentKeyStore.getDataGraf(
               countryId,
               coincidentKeyStore.gdp,
               true,
@@ -53,12 +43,9 @@ const CoincidentIndicators = observer(() => {
           />
         </Col>
         <Col md={12} lg={6}>
-          <h2 className="text-center">
-            {coincidentKeyStore.coincidentKeysData.coincidentNames[1]}
-          </h2>
-          <Line
-            ref={grafRef}
-            data={coincidentKeyStore.getDataGraf(
+          <DataGraf
+            keyName={coincidentKeyStore.coincidentKeysData.coincidentNames[1]}
+            dataGraf={coincidentKeyStore.getDataGraf(
               countryId,
               coincidentKeyStore.tradeBalances,
               true,
