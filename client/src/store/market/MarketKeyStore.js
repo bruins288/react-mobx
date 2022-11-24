@@ -1,7 +1,6 @@
 import { computed, makeObservable, observable } from "mobx";
-import GlobalSubjectStore from "../GlobalSubjectStore.js";
 import { marketKeysData, marketData } from "../../data/market/marketData.js";
-import Helper from "../../utils/Helper.js";
+import GlobalSubjectStore from "../GlobalSubjectStore.js";
 
 export default class MarketKeyStore extends GlobalSubjectStore {
   constructor() {
@@ -31,20 +30,6 @@ export default class MarketKeyStore extends GlobalSubjectStore {
   get stocks() {
     return this._stocks;
   }
-  getNameFields(dataStore) {
-    let rootFields = Helper.getFieldsName(dataStore).slice(1, 3);
-    let childFields = Helper.getFieldsName(dataStore[0][rootFields[1]]).slice(
-      1,
-      2
-    );
-    return new Map(
-      Object.entries({
-        name: rootFields[0],
-        rootData: rootFields[1],
-        data: childFields[0],
-      })
-    );
-  }
   get avgReuters_10Numbers() {
     let avgKeyNumbers = new Map();
     let avgForReuters_10 = this.tReuters_10.map((data) => ({
@@ -71,48 +56,10 @@ export default class MarketKeyStore extends GlobalSubjectStore {
     );
     return avgKeyNumbers;
   }
-
   getAvgReuters_10NumbersById(id) {
     return this._avgReuters_10Numbers.get(id);
   }
   getAvgStockNumbersById(id) {
     return this._avgStockNumbers.get(id);
-  }
-  getLabelGraf(rootData, dataStore) {
-    return rootData[this.getNameFields(dataStore).get("rootData")].map((data) =>
-      Helper.getMonthYear(data.date)
-    );
-  }
-  getDatasetGraf(rootData, dataStore, isFill, backgroundColor, borderColor) {
-    return {
-      label: rootData[this.getNameFields(dataStore).get("name")],
-      data: [
-        ...rootData[this.getNameFields(dataStore).get("rootData")].map(
-          (data) => data[this.getNameFields(dataStore).get("data")]
-        ),
-      ],
-      fill: isFill,
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
-    };
-  }
-  getDataGraf(countryId, dataStore, isFill, backgroundColor, borderColor) {
-    return dataStore
-      .filter((rootData) => rootData.countryId === countryId)
-      .reduce(
-        (acc, rootData) => ({
-          labels: [...this.getLabelGraf(rootData, dataStore)],
-          datasets: [
-            this.getDatasetGraf(
-              rootData,
-              dataStore,
-              isFill,
-              backgroundColor,
-              borderColor
-            ),
-          ],
-        }),
-        {}
-      );
   }
 }
