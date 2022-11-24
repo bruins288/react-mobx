@@ -1,7 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
-import { Form, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import InputSelect from "../../components/ui/inputs/InputSelect.jsx";
 import { Line } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import StreamingPlugin from "chartjs-plugin-streaming";
@@ -30,17 +31,10 @@ const MarketIndicators = observer(() => {
       </h1>
       <Row>
         <Col>
-          <Form.Select
-            className="text-center"
-            aria-label="Выбор страны"
-            onChange={(e) => setCountryId(Number(e.target.value))}
-          >
-            {marketKeyStore.countries.map((country) => (
-              <option value={country.id} key={country.id}>
-                {country.countryName}
-              </option>
-            ))}
-          </Form.Select>
+          <InputSelect
+            dataList={marketKeyStore.countries}
+            setData={setCountryId}
+          />
         </Col>
       </Row>
       <Row className="mt-2">

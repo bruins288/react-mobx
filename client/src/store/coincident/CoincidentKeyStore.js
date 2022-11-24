@@ -1,5 +1,8 @@
 import GlobalSubjectStore from "../GlobalSubjectStore.js";
-import { coincidentData, coincidentKeysData } from "../../data/leadingData.js";
+import {
+  coincidentData,
+  coincidentKeysData,
+} from "../../data/coincidentData.js";
 import { computed, makeObservable, observable } from "mobx";
 
 export default class CoincidentKeyStore extends GlobalSubjectStore {

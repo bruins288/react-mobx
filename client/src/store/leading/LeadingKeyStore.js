@@ -22,7 +22,7 @@ export default class LeadingKeyStore extends GlobalSubjectStore {
     return this._leadingKeysData;
   }
   get manufacturing() {
-    return this._manufacturingPMI;
+    return this._manufacturing;
   }
   get services() {
     return this._services;
