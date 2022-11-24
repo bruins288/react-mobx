@@ -1,3 +1,12 @@
+export const leadingKeysData = {
+  id: 2,
+  leadingName: "Опережающие индикаторы",
+  leadingNames: [
+    "Индекс производственной активности",
+    "Индекс деловой активности",
+  ],
+};
+
 export const leadingData = {
   manufacturingPMI: [
     {

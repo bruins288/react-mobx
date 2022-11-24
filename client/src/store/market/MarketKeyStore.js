@@ -1,5 +1,5 @@
 import { computed, makeObservable, observable } from "mobx";
-import { marketKeysData, marketData } from "../../data/market/marketData.js";
+import { marketKeysData, marketData } from "../../data/marketData.js";
 import GlobalSubjectStore from "../GlobalSubjectStore.js";
 
 export default class MarketKeyStore extends GlobalSubjectStore {

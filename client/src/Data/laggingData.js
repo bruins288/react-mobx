@@ -1,3 +1,8 @@
+export const laggingKeysData = {
+  id: 4,
+  laggingName: "Запаздывающие индикаторы",
+  laggingNames: ["Уровень безработицы", "Уровень инфляции"],
+};
 export const coincidentData = {
   unemploymentRates: [
     {
