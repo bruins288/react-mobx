@@ -31,6 +31,20 @@ export default class MarketKeyStore extends GlobalSubjectStore {
   get stocks() {
     return this._stocks;
   }
+  getNameFields(dataStore) {
+    let rootFields = Helper.getFieldsName(dataStore).slice(1, 3);
+    let childFields = Helper.getFieldsName(dataStore[0][rootFields[1]]).slice(
+      1,
+      2
+    );
+    return new Map(
+      Object.entries({
+        name: rootFields[0],
+        rootData: rootFields[1],
+        data: childFields[0],
+      })
+    );
+  }
   get avgReuters_10Numbers() {
     let avgKeyNumbers = new Map();
     let avgForReuters_10 = this.tReuters_10.map((data) => ({
@@ -64,51 +78,38 @@ export default class MarketKeyStore extends GlobalSubjectStore {
   getAvgStockNumbersById(id) {
     return this._avgStockNumbers.get(id);
   }
-  buildGrafReuters_10(countryId) {
-    return this.tReuters_10
-      .filter((reuters) => reuters.countryId === countryId)
-      .reduce(
-        (acc, reuters) => ({
-          labels: [
-            ...reuters.tReuters_10Data.map((dataReuters) =>
-              Helper.getMonthYear(dataReuters.date)
-            ),
-          ],
-          datasets: [
-            {
-              label: reuters.tReutersName,
-              data: [
-                ...reuters.tReuters_10Data.map(
-                  (dataReuters) => dataReuters.tr_10
-                ),
-              ],
-              fill: true,
-              backgroundColor: "rgba(6, 156,51, .3)",
-              borderColor: "#02b844",
-            },
-          ],
-        }),
-        {}
-      );
+  getLabelGraf(rootData, dataStore) {
+    return rootData[this.getNameFields(dataStore).get("rootData")].map((data) =>
+      Helper.getMonthYear(data.date)
+    );
   }
-  buildGrafStock(countryId) {
-    return this.stocks
-      .filter((stock) => stock.countryId === countryId)
+  getDatasetGraf(rootData, dataStore, isFill, backgroundColor, borderColor) {
+    return {
+      label: rootData[this.getNameFields(dataStore).get("name")],
+      data: [
+        ...rootData[this.getNameFields(dataStore).get("rootData")].map(
+          (data) => data[this.getNameFields(dataStore).get("data")]
+        ),
+      ],
+      fill: isFill,
+      backgroundColor: backgroundColor,
+      borderColor: borderColor,
+    };
+  }
+  getDataGraf(countryId, dataStore, isFill, backgroundColor, borderColor) {
+    return dataStore
+      .filter((rootData) => rootData.countryId === countryId)
       .reduce(
-        (acc, stock) => ({
-          labels: [
-            ...stock.stockData.map((dataStock) =>
-              Helper.getMonthYear(dataStock.date)
-            ),
-          ],
+        (acc, rootData) => ({
+          labels: [...this.getLabelGraf(rootData, dataStore)],
           datasets: [
-            {
-              label: stock.stockName,
-              data: [...stock.stockData.map((dataStock) => dataStock.stock)],
-              fill: true,
-              backgroundColor: "rgba(27, 193, 210, 0.3)",
-              borderColor: "#02acb8",
-            },
+            this.getDatasetGraf(
+              rootData,
+              dataStore,
+              isFill,
+              backgroundColor,
+              borderColor
+            ),
           ],
         }),
         {}

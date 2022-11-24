@@ -9,4 +9,7 @@ export default class Helper {
   static getMonthYear(date) {
     return this.convertFormatDate(date).toISOString().substring(0, 7);
   }
+  static getFieldsName(dataList) {
+    return Object.getOwnPropertyNames(...dataList);
+  }
 }

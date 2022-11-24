@@ -6,6 +6,12 @@ import { Line } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import StreamingPlugin from "chartjs-plugin-streaming";
 import "chart.js/auto";
+import {
+  GREEN_BACK_1,
+  GREEN_LINE_1,
+  BLUE_BACK_1,
+  BLUE_LINE_1,
+} from "../../utils/constantsColor.js";
 
 Chart.register(StreamingPlugin);
 Chart.defaults.font.size = 14;
@@ -16,12 +22,6 @@ const MarketIndicators = observer(() => {
   const grafRef = React.useRef();
 
   console.log("render market indicators");
-
-  const chartOptions = {
-    legend: {
-      positions: "left",
-    },
-  };
 
   return (
     <Container fluid className="p-0">
@@ -44,25 +44,34 @@ const MarketIndicators = observer(() => {
         </Col>
       </Row>
       <Row className="mt-2">
-        <Col>
+        <Col md={12} lg={6}>
           <h2 className="text-center">
             {marketKeyStore.marketKeysData.marketNames[0]}
           </h2>
           <Line
             ref={grafRef}
-            data={marketKeyStore.buildGrafReuters_10(countryId)}
+            data={marketKeyStore.getDataGraf(
+              countryId,
+              marketKeyStore.tReuters_10,
+              true,
+              GREEN_BACK_1,
+              GREEN_LINE_1
+            )}
           />
         </Col>
-      </Row>
-      <Row className="mt-2">
-        <Col>
+        <Col md={12} lg={6}>
           <h2 className="text-center">
             {marketKeyStore.marketKeysData.marketNames[1]}
           </h2>
           <Line
             ref={grafRef}
-            data={marketKeyStore.buildGrafStock(countryId)}
-            options={chartOptions}
+            data={marketKeyStore.getDataGraf(
+              countryId,
+              marketKeyStore.stocks,
+              true,
+              BLUE_BACK_1,
+              BLUE_LINE_1
+            )}
           />
         </Col>
       </Row>
