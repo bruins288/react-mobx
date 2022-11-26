@@ -1,7 +1,11 @@
 export const laggingKeysData = {
   id: 4,
   laggingName: "Запаздывающие индикаторы",
-  laggingNames: ["Уровень безработицы", "Уровень инфляции"],
+  laggingNames: [
+    "Уровень безработицы",
+    "Уровень инфляции",
+    "Промышленная инфляция",
+  ],
 };
 export const laggingData = {
   unemploymentRates: [

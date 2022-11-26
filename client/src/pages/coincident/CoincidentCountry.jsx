@@ -12,7 +12,7 @@ const CoincidentCountry = observer(() => {
 
   let nameIndicators = coincidentStore.getNameIndicatorsByCountryId(
     coincidentStore.countriesShortNameKeys.get(country),
-    coincidentStore.coincidentKeysData.leadingNames,
+    coincidentStore.coincidentKeysData.coincidentNames,
     coincidentStore.gdp,
     coincidentStore.tradeBalances,
     coincidentStore.retailSales,

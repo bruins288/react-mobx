@@ -517,7 +517,7 @@ export const coincidentData = {
     },
     {
       id: 100,
-      retailSalesName: "Russia Balance of Trade",
+      retailSalesName: "Russia Retail Sales YoY",
       retailSalesData: [
         { id: 61, retailSales: 4.3, date: "01.12.2021", indicatorId: 100 },
         { id: 62, retailSales: 3.1, date: "29.12.2021", indicatorId: 100 },
@@ -537,7 +537,7 @@ export const coincidentData = {
     },
     {
       id: 101,
-      retailSalesName: "Japan Balance of Trade",
+      retailSalesName: "Japan Retail Sales YoY",
       retailSalesData: [
         { id: 73, retailSales: 0.9, date: "28.11.2021", indicatorId: 101 },
         { id: 74, retailSales: 1.9, date: "26.12.2021", indicatorId: 101 },

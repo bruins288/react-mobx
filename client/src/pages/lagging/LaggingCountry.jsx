@@ -12,7 +12,7 @@ const LaggingCountry = observer(() => {
 
   let nameIndicators = laggingStore.getNameIndicatorsByCountryId(
     laggingStore.countriesShortNameKeys.get(country),
-    laggingStore.laggingKeysData.leadingNames,
+    laggingStore.laggingKeysData.laggingNames,
     laggingStore.unemploymentRates,
     laggingStore.inflationRates,
     laggingStore.producerPrices
