@@ -6,10 +6,10 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import UserStore from "./store/UserStore.js";
 import GlobalSubjectStore from "./store/GlobalSubjectStore.js";
-import MarketKeyStore from "./store/market/MarketKeyStore.js";
-import LeadingKeyStore from "./store/leading/LeadingKeyStore.js";
-import CoincidentKeyStore from "./store/coincident/CoincidentKeyStore.js";
-import LaggingKeyStore from "./store/lagging/LaggingKeyStore.js";
+import MarketStore from "./store/MarketStore.js";
+import LeadingStore from "./store/LeadingStore.js";
+import CoincidentStore from "./store/CoincidentStore.js";
+import LaggingStore from "./store/LaggingStore.js";
 
 export const Context = createContext(null);
 
@@ -20,10 +20,10 @@ root.render(
       value={{
         userStore: new UserStore(),
         globalSubjectStore: new GlobalSubjectStore(),
-        marketKeyStore: new MarketKeyStore(),
-        leadingKeyStore: new LeadingKeyStore(),
-        coincidentKeyStore: new CoincidentKeyStore(),
-        laggingKeyStore: new LaggingKeyStore(),
+        marketStore: new MarketStore(),
+        leadingStore: new LeadingStore(),
+        coincidentStore: new CoincidentStore(),
+        laggingStore: new LaggingStore(),
       }}
     >
       <App />

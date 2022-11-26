@@ -12,19 +12,19 @@ import {
 } from "../../utils/constantsColor.js";
 
 const LeadingIndicators = observer(() => {
-  const { leadingKeyStore } = React.useContext(Context);
+  const { leadingStore } = React.useContext(Context);
   const [countryId, setCountryId] = React.useState(1);
 
   console.log("render leading indicators");
   return (
     <Container fluid className="p-0">
       <h1 className="text-center">
-        {leadingKeyStore.leadingKeysData.leadingName}
+        {leadingStore.leadingKeysData.leadingName}
       </h1>
       <Row>
         <Col>
           <InputSelect
-            dataList={leadingKeyStore.countries}
+            dataList={leadingStore.countries}
             setData={setCountryId}
           />
         </Col>
@@ -32,10 +32,10 @@ const LeadingIndicators = observer(() => {
       <Row className="mt-2">
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={leadingKeyStore.leadingKeysData.leadingNames[0]}
-            dataGraf={leadingKeyStore.getDataGraf(
+            keyName={leadingStore.leadingKeysData.leadingNames[0]}
+            dataGraf={leadingStore.getDataGraf(
               countryId,
-              leadingKeyStore.manufacturing,
+              leadingStore.manufacturing,
               true,
               GREEN_BACK_1,
               GREEN_LINE_1
@@ -44,10 +44,10 @@ const LeadingIndicators = observer(() => {
         </Col>
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={leadingKeyStore.leadingKeysData.leadingNames[1]}
-            dataGraf={leadingKeyStore.getDataGraf(
+            keyName={leadingStore.leadingKeysData.leadingNames[1]}
+            dataGraf={leadingStore.getDataGraf(
               countryId,
-              leadingKeyStore.services,
+              leadingStore.services,
               true,
               BLUE_BACK_1,
               BLUE_LINE_1

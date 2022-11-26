@@ -12,19 +12,19 @@ import {
 } from "../../utils/constantsColor.js";
 
 const CoincidentIndicators = observer(() => {
-  const { coincidentKeyStore } = React.useContext(Context);
+  const { coincidentStore } = React.useContext(Context);
   const [countryId, setCountryId] = React.useState(1);
 
   console.log("render coincident indicators");
   return (
     <Container fluid className="p-0">
       <h1 className="text-center">
-        {coincidentKeyStore.coincidentKeysData.coincidentName}
+        {coincidentStore.coincidentKeysData.coincidentName}
       </h1>
       <Row>
         <Col>
           <InputSelect
-            dataList={coincidentKeyStore.countries}
+            dataList={coincidentStore.countries}
             setData={setCountryId}
           />
         </Col>
@@ -32,10 +32,10 @@ const CoincidentIndicators = observer(() => {
       <Row className="mt-2">
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={coincidentKeyStore.coincidentKeysData.coincidentNames[0]}
-            dataGraf={coincidentKeyStore.getDataGraf(
+            keyName={coincidentStore.coincidentKeysData.coincidentNames[0]}
+            dataGraf={coincidentStore.getDataGraf(
               countryId,
-              coincidentKeyStore.gdp,
+              coincidentStore.gdp,
               true,
               GREEN_BACK_1,
               GREEN_LINE_1
@@ -44,10 +44,10 @@ const CoincidentIndicators = observer(() => {
         </Col>
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={coincidentKeyStore.coincidentKeysData.coincidentNames[1]}
-            dataGraf={coincidentKeyStore.getDataGraf(
+            keyName={coincidentStore.coincidentKeysData.coincidentNames[1]}
+            dataGraf={coincidentStore.getDataGraf(
               countryId,
-              coincidentKeyStore.tradeBalances,
+              coincidentStore.tradeBalances,
               true,
               BLUE_BACK_1,
               BLUE_LINE_1

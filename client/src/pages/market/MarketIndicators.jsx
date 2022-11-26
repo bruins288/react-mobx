@@ -12,20 +12,18 @@ import {
 } from "../../utils/constantsColor.js";
 
 const MarketIndicators = observer(() => {
-  const { marketKeyStore } = React.useContext(Context);
+  const { marketStore } = React.useContext(Context);
   const [countryId, setCountryId] = React.useState(1);
 
   console.log("render market indicators");
 
   return (
     <Container fluid className="p-0">
-      <h1 className="text-center">
-        {marketKeyStore.marketKeysData.marketName}
-      </h1>
+      <h1 className="text-center">{marketStore.marketKeysData.marketName}</h1>
       <Row>
         <Col>
           <InputSelect
-            dataList={marketKeyStore.countries}
+            dataList={marketStore.countries}
             setData={setCountryId}
           />
         </Col>
@@ -33,10 +31,10 @@ const MarketIndicators = observer(() => {
       <Row className="mt-2">
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={marketKeyStore.marketKeysData.marketNames[0]}
-            dataGraf={marketKeyStore.getDataGraf(
+            keyName={marketStore.marketKeysData.marketNames[0]}
+            dataGraf={marketStore.getDataGraf(
               countryId,
-              marketKeyStore.tReuters_10,
+              marketStore.tReuters_10,
               true,
               GREEN_BACK_1,
               GREEN_LINE_1
@@ -45,10 +43,10 @@ const MarketIndicators = observer(() => {
         </Col>
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={marketKeyStore.marketKeysData.marketNames[1]}
-            dataGraf={marketKeyStore.getDataGraf(
+            keyName={marketStore.marketKeysData.marketNames[1]}
+            dataGraf={marketStore.getDataGraf(
               countryId,
-              marketKeyStore.stocks,
+              marketStore.stocks,
               true,
               BLUE_BACK_1,
               BLUE_LINE_1

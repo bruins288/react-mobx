@@ -10,6 +10,8 @@ export default class Helper {
     return this.convertFormatDate(date).toISOString().substring(0, 7);
   }
   static getNameFields(dataList) {
-    return Object.getOwnPropertyNames(...dataList);
+    return Array.isArray(dataList)
+      ? Object.getOwnPropertyNames(...dataList)
+      : Object.getOwnPropertyNames(dataList);
   }
 }

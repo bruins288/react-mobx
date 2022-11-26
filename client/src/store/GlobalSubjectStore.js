@@ -11,8 +11,10 @@ export default class GlobalSubjectStore {
       this,
       {
         _globalSubjects: observable,
+        globalSubjects: computed,
         countries: computed,
         countryKeys: computed,
+        countriesShortNameKeys: computed,
       },
       { autoBind: true }
     );
@@ -31,6 +33,15 @@ export default class GlobalSubjectStore {
     this.globalSubjects.forEach((continent) =>
       continent.countries.forEach((country) =>
         keys.set(country.id, country.countryName)
+      )
+    );
+    return keys;
+  }
+  get countriesShortNameKeys() {
+    let keys = new Map();
+    this.globalSubjects.forEach((continent) =>
+      continent.countries.forEach((country) =>
+        keys.set(country.countryShortName, country.id)
       )
     );
     return keys;
@@ -88,5 +99,37 @@ export default class GlobalSubjectStore {
         }),
         {}
       );
+  }
+  getNameIndicatorsByCountryId(countryId, ...indicators) {
+    let result = [];
+    for (let indicator of indicators) {
+      indicator
+        .filter((current) => current.countryId === countryId)
+        .map((current) =>
+          result.push({
+            id: current.id,
+            indicatorName:
+              current[Helper.getNameFields(current).slice(1, 2).shift()],
+          })
+        );
+    }
+    return result;
+  }
+  getNameIndicators(...indicators) {
+    let result = indicators.shift().map((indicator) => ({
+      countryId: indicator.countryId,
+      allIndicators: [
+        {
+          id: indicator.id,
+          indicatorName:
+            indicator[Helper.getNameFields(indicator).slice(1, 2).shift()],
+        },
+        ...this.getNameIndicatorsByCountryId(
+          indicator.countryId,
+          ...indicators
+        ),
+      ],
+    }));
+    return result;
   }
 }

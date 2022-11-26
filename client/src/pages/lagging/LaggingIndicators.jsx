@@ -12,19 +12,19 @@ import {
 } from "../../utils/constantsColor.js";
 
 const LaggingIndicators = observer(() => {
-  const { laggingKeyStore } = React.useContext(Context);
+  const { laggingStore } = React.useContext(Context);
   const [countryId, setCountryId] = React.useState(1);
 
   console.log("render lagging indicators");
   return (
     <Container fluid className="p-0">
       <h1 className="text-center">
-        {laggingKeyStore.laggingKeysData.laggingName}
+        {laggingStore.laggingKeysData.laggingName}
       </h1>
       <Row>
         <Col>
           <InputSelect
-            dataList={laggingKeyStore.countries}
+            dataList={laggingStore.countries}
             setData={setCountryId}
           />
         </Col>
@@ -32,10 +32,10 @@ const LaggingIndicators = observer(() => {
       <Row className="mt-2">
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={laggingKeyStore.laggingKeysData.laggingNames[0]}
-            dataGraf={laggingKeyStore.getDataGraf(
+            keyName={laggingStore.laggingKeysData.laggingNames[0]}
+            dataGraf={laggingStore.getDataGraf(
               countryId,
-              laggingKeyStore.unemploymentRates,
+              laggingStore.unemploymentRates,
               true,
               GREEN_BACK_1,
               GREEN_LINE_1
@@ -44,10 +44,10 @@ const LaggingIndicators = observer(() => {
         </Col>
         <Col md={12} lg={6}>
           <DataGraf
-            keyName={laggingKeyStore.laggingKeysData.laggingNames[1]}
-            dataGraf={laggingKeyStore.getDataGraf(
+            keyName={laggingStore.laggingKeysData.laggingNames[1]}
+            dataGraf={laggingStore.getDataGraf(
               countryId,
-              laggingKeyStore.inflationRates,
+              laggingStore.inflationRates,
               true,
               BLUE_BACK_1,
               BLUE_LINE_1
