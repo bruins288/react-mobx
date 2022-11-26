@@ -80,6 +80,7 @@ export default class MarketStore extends GlobalSubjectStore {
     );
     return avgKeyNumbers;
   }
+
   getAvgReuters_10NumbersById(id) {
     return this._avgReuters_10Numbers.get(id);
   }

@@ -100,21 +100,45 @@ export default class GlobalSubjectStore {
         {}
       );
   }
-  getNameIndicatorsByCountryId(countryId, ...indicators) {
+  getObjectGraf(objectData, labelName, isFill, backgroundColor, borderColor) {
+    let grafObject = {
+      labels: [...objectData.map((dat) => Helper.getMonthYear(dat.date))],
+      datasets: [
+        {
+          label: labelName,
+          data: [
+            ...objectData.map(
+              (dat) => dat[Helper.getNameFields(objectData).slice(1, 2)]
+            ),
+          ],
+          fill: isFill,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+        },
+      ],
+    };
+
+    return grafObject;
+  }
+
+  getNameIndicatorsByCountryId(countryId, titles, ...indicators) {
     let result = [];
-    for (let indicator of indicators) {
-      indicator
+    for (let i = 0; i < indicators.length; i++) {
+      indicators[i]
         .filter((current) => current.countryId === countryId)
         .map((current) =>
           result.push({
             id: current.id,
             indicatorName:
               current[Helper.getNameFields(current).slice(1, 2).shift()],
+            title: titles[i],
+            data: current[Helper.getNameFields(current).slice(2, 3).shift()],
           })
         );
     }
     return result;
   }
+
   getNameIndicators(...indicators) {
     let result = indicators.shift().map((indicator) => ({
       countryId: indicator.countryId,

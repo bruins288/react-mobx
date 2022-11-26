@@ -1,7 +1,13 @@
 export const coincidentKeysData = {
   id: 3,
   coincidentName: "Совпадающие индикаторы",
-  coincidentNames: ["Валовый внутренний продукт", "Торговый баланс"],
+  coincidentNames: [
+    "Валовый внутренний продукт",
+    "Торговый баланс",
+    "Розничные продажи",
+    "Промышленное производство",
+    "Изменение занятости",
+  ],
 };
 export const coincidentData = {
   gdp: [
